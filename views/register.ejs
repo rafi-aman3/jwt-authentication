@@ -1,0 +1,91 @@
+<div class="notificationWrapper">
+    <div id="toast">
+        <div id="toastContainer">
+            
+        </div>
+        <button class="toastButton" onclick="closeToast()">
+            &times
+        </button>
+    </div>
+</div>
+<form id="reg-form">
+    <div class="form">
+        <h2>Register</h2>
+        <div class="input" id="my-form">
+            <div class="inputBox">
+                <label for="username">Username</label>
+                <input type="text" name="username" id="username" placeholder="test">
+            </div>
+            <div class="inputBox">
+                <label for="email">Email</label>
+                <input type="text" name="email" id="email" placeholder="test@test.com">
+            </div>
+            <div class="inputBox">
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password">
+            </div>
+            <div class="inputBox">
+                <input class="btn" type="submit" name="submit" value="Register" >
+            </div>
+        </div>
+        <p class="forget">Forget Password? <span style="cursor: pointer" onclick="showToast()">Click Here</span></p>
+    </div>
+</form>
+
+
+<script>
+    const form = document.getElementById('reg-form')
+    const toast = document.getElementById('toast')
+    const toastContainer = document.getElementById('toastContainer')
+    form.addEventListener('submit', registerUser)
+
+
+    async function registerUser(e) {
+        e.preventDefault();
+
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+        const email = document.getElementById('email').value;
+
+        const result = await fetch('api/register', {
+            method: 'POST',
+            headers: {
+                "Content-Type": 'application/json'
+            },
+            body: JSON.stringify({
+                username,
+                password,
+                email
+
+            })
+        }).then((res) => res.json())
+
+        if(result.status === "success") {
+            toast.style.borderLeft  =  "8px solid #47d764";
+            toastContainer.textContent = result.message
+            showToast();
+            document.getElementById('username').value = "",
+            document.getElementById('password').value = '',
+            document.getElementById('email').value = ''  
+        } else {
+            toast.style.borderLeft = "8px solid red";
+            toastContainer.textContent = result.message;
+            showToast()
+        }
+    }
+
+    let x;
+    function showToast() {
+        clearTimeout(x);
+        toast.style.transform = "translate(0)";
+        x = setTimeout(() => {
+            toast.style.transform = "translate(400px)"
+        }, 4000)
+        
+    }
+
+    function closeToast() {
+        toast.style.transform = "translate(400px)"
+    }
+
+</script>

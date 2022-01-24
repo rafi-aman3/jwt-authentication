@@ -1,0 +1,146 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #ebf5fc;
+}
+
+.form{
+    position: relative;
+    width: 350px;
+    padding: 40px 40px 60px;
+    background: #ebf5fc;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: -5px -5px 10px rgba(255, 255, 255, 0.8),
+                5px 5px 15px rgba(0, 0, 0, 0.1);
+
+}
+
+.form h2 {
+    color: #32a3b1;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+}
+
+.form .input{
+    text-align: left;
+    margin-top: 40px;
+
+}
+
+.form .input .inputBox{
+    margin-top: 20px;
+
+}
+
+.form .input .inputBox label{
+    display: block;
+    color: #868686;
+    margin-bottom: 5px;
+    font-size: 18px;
+}
+
+.form .input .inputBox input{
+    width: 100%;
+    height: 50px;
+    background: #ebf5fc;
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    padding: 5px 15px;
+    font-size: 18px;
+    color: #32a3b1;
+    box-shadow: inset -2px -2px 6px rgba(255, 255, 255, 1),
+    inset 2px 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.form .input .inputBox input[type="submit"]{
+
+    margin-top: 20px;
+    box-shadow:  -2px -2px 6px rgba(255, 255, 255, 1),
+                 2px 2px 6px rgba(0, 0, 0, 0.1);
+
+
+}
+
+.form .input .inputBox input[type="submit"]:active{
+
+    color: #006c9c;
+    margin-top: 20px;
+    box-shadow: inset -2px -2px 6px rgba(255, 255, 255, 1),
+                inset 2px 2px 6px rgba(0, 0, 0, 0.1);
+
+
+}
+
+.form .input .inputBox input::placeholder{
+    color: #bdcada;
+    font-size: 18px;
+}
+
+.forget{
+    margin-top: 30px;
+    color: #555;
+}
+
+.forget a{
+    color: #ff0047;
+}
+
+.notificationWrapper {
+    width: 420px;
+    padding: 30px 20px;
+    position: absolute;
+    bottom: 50px;
+    right: 0;
+    overflow: hidden;
+}
+
+#toast {
+    width: 380px;
+    height: 80px;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+    border-radius: 7px;
+    display: grid;
+    grid-template-columns: 6fr 0.5fr;
+    transform: translate(400px);
+    transition: 1s;
+
+}
+
+
+#toastContainer {
+    align-self: center;
+
+}
+
+.toastContainer p:first-child{
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.toastContainer p:last-child{
+    color: #656565;
+    font-weight: 400;
+    font-size: 12px;
+}
+
+.toastButton {
+    align-self: flex-start;
+    background-color: transparent;
+    font-size: 25px;
+    line-height: 0;
+    color: #656565;
+}
